@@ -1,39 +1,37 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+const numbers =[1,2,3,4,5,6,7,8,9,0];
+const symbols = ["!", "@", "#", "$","%","&","*"];
+const lowerAlph = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const upperAlph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-// Write password to the #password input
-function writePassword(length, numbers, uppChar, lowChar, specChar, noDuplicates) {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-
-  let characters = '';
-
-  if(numbers){
-    characters += '0,1,2,3,4,5,6,7,8,9'
+function generatePassword(){
+// 1. Prompt the user for the password criteria
+//      a. Password length 8 < 128
+//      b. Lowercase, uppercase, numbers, and special characters
+    let length = parseInt(prompt("How many characters will your password be? (8-128 characters)"));
+    if(isNaN(length) || length < 8 || length > 128 ) {
+      alert("Length has to be a NUMERICAL value between 8-128. Try Again!");
+      return false;
   }
-  if(uppChar){
-    characters += 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z'
-  }
-  if(lowChar){
-    characters += 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z'
-  }
-  if(specChar){
-    characters += '!,@,#,$,%,^,&,*,(,)'
-  }
+    
 
-  let passwordArray = [];
+// 2. Validate the input. 
 
-  while(passwordArray.length < length) {
-  const character = characters[Math.floor(Math.random() * characters.length)];
 
-  if(!noDuplicates || !passwordArray.includes(character)){
-    passwordArray.push(character)
-  }
-  passwordArray.push(character)
+// 3. Generate password based on criteria.
+
+
+// 4. Display password to the page.
+  
 }
 
-  return passwordArray.join('');
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 
 }
 
